@@ -5,19 +5,19 @@
 ### Identifikasi Variabel dan Tipe Data
 |Nomor|Variabel|Tipe Data|Keterangan|
 |-|-|-|-|
-|1|`is\_member`|Boolean|Status keanggotaan pelanggan (True/False), ini yang jadi input awal|
-|2|`jumlah\_buku`|Integer (bilangan bulat)|Jumlah buku yang dibeli, ini juga input awal|
-|3|`total\_awal`|Real (bilangan pecahan/mengapung)|Total belanja pelanggan sebelum kena diskon, input awal juga|
+|1|`is\_member`|Boolean|Status keanggotaan pelanggan (True/False), input awal|
+|2|`jumlah\_buku`|Integer|Jumlah buku yang dibeli, input awal|
+|3|`total\_awal`|Real|Total belanja pelanggan sebelum kena diskon, input awal|
 |4|`persen\_diskon`|Real|Variabel bantu, dipakai buat nyimpen sementara berapa persen diskon yang berlaku (10, 15, 5, atau 0)|
-|5|`nominal\_diskon`|Real|Variabel output, nyimpen berapa rupiah potongan diskonnya|
-|6|`total\_bayar`|Real|Variabel output, nyimpen total akhir yang harus dibayar pelanggan|
+|5|`nominal\_diskon`|Real|Variabel output, menyimpan berapa rupiah potongan diskonnya|
+|6|`total\_bayar`|Real|Variabel output, menyimpan total akhir yang harus dibayar pelanggan|
 
 ### Identifikasi Struktrul Kontrol
 |Struktur|-|
 |-|-|
-|**Sequence**|Alurnya: user isi data → program hitung diskon → hitung potongan harganya → hitung total yang harus dibayar → baru ditampilkan hasilnya. Semua ini dikerjakan berurutan.|
-|**Selection**|Di soal ini ada percabangan besar: kalau `is\_member = True` (member) beda rumusnya sama kalau `is\_member = False` (non-member). Di dalam masing-masing cabang itu, masih ada percabangan lagi buat cek syarat tambahan diskon (misal member yang belanjanya banyak dapat diskon lebih gede).|
-|**Iteration**|Di soal ini ada validasi input di awal (namanya *Validation Loop*). Programnya bakal terus minta user masukin data ulang selama `total\_awal` masih minus **atau** `jumlah\_buku` masih kurang dari 1. Baru berhenti minta input kalau datanya udah bener.|
+|**Sequence**|Alurnya: user isi data → program hitung diskon → hitung potongan harganya → hitung total yang harus dibayar → baru ditampilkan hasilnya. Semua dikerjakan berurutan.|
+|**Selection**|Ada percabangan besar: kalau `is\_member = True` (member) beda rumusnya sama kalau `is\_member = False` (non-member). Di dalam masing-masing cabang itu, masih ada percabangan lagi buat cek syarat tambahan diskon (misal member yang belanjanya banyak dapat diskon lebih gede).|
+|**Iteration**|Ada validasi input di awal (*Validation Loop*). Programnya bakal terus minta user masukin data ulang selama `total\_awal` masih minus **atau** `jumlah\_buku` masih kurang dari 1. Baru berhenti minta input kalau datanya udah bener.|
 
 \---
 
