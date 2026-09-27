@@ -1,4 +1,4 @@
-# PROGRAM PENUGASAN TERSTRUKTUR : ALGORITMA DAN STRUKTUR DATA
+# PENUGASAN TERSTRUKTUR : ALGORITMA DAN STRUKTUR DATA
 ## Studi Kasus : Sistem Transaksi & Validasi Toko Buku Modern
 \---
 ## A. Analasis Komponen
