@@ -60,7 +60,7 @@ ALGORITMA :
 END
 ```
 
-## C. TRACE TABLE
+## C. Trace Table
 ### Kasus A: `is_member = True`, `total_awal = 250000`, `jumlah_buku = 4`
 
 Input ini dari awal sudah valid (total_awal tidak negatif, jumlah_buku tidak kurang dari 1), jadi loop validasi langsung dilewati, tidak perlu input ulang.
