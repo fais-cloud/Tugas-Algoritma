@@ -25,14 +25,14 @@
 ```
 PROGRAM SistemTransaksiTokoBuku
 DEKLARASI:
-   is_member : boolean 
-   jumlah_buku : integer 
-   total_awal : real    
-   persen_diskon : real    
-   nominal_diskon : real  
-   total_bayar : real    
+    is_member : boolean 
+    jumlah_buku : integer 
+    total_awal : real    
+    persen_diskon : real    
+    nominal_diskon : real  
+    total_bayar : real    
 ALGORITMA :
-   INPUT(is_member, jumlah_buku, total_awal)
+    INPUT(is_member, jumlah_buku, total_awal)
 
     WHILE (total_awal < 0) OR (jumlah_buku < 1) THEN
         OUTPUT("Input tidak valid. Coba masukkan ulang.")
@@ -56,9 +56,54 @@ ALGORITMA :
     total_bayar ← total_awal - nominal_diskon
 
     OUTPUT(nominal_diskon, total_bayar)
+
+END
 ```
 
 ## C. TRACE TABLE
+### Kasus A: `is_member = True`, `total_awal = 250000`, `jumlah_buku = 4`
+
+Input ini dari awal sudah valid (total_awal tidak negatif, jumlah_buku tidak kurang dari 1), jadi loop validasi langsung dilewati, tidak perlu input ulang.
+
+| Langkah | is_member | jumlah_buku | total_awal | Kondisi Loop (`<0 OR <1`) | persen_diskon | nominal_diskon | total_bayar | Keterangan |
+|---|---|---|---|---|---|---|---|---|
+| 1 | True | 4 | 250000 | False → langsung lanjut | - | - | - | Input awal sudah valid |
+| 2 | True | 4 | 250000 | - | 10 | - | - | Member → dapat diskon dasar 10% |
+| 3 | True | 4 | 250000 | - | **15** | - | - | 250000≥200000 DAN 4≥3 → keduanya terpenuhi, tambahan 5% |
+| 4 | True | 4 | 250000 | - | 15 | **37500** | - | 250000 × 15% |
+| 5 | True | 4 | 250000 | - | 15 | 37500 | **212500** | 250000 − 37500 |
+
+**Output:** `nominal_diskon = 37500`, `total_bayar = 212500`
+
+### Kasus B: `is_member = False`, `total_awal = 350000`, `jumlah_buku = 2`
+
+Input ini juga sudah valid dari awal, jadi loop validasi dilewati.
+
+| Langkah | is_member | jumlah_buku | total_awal | Kondisi Loop (`<0 OR <1`) | persen_diskon | nominal_diskon | total_bayar | Keterangan |
+|---|---|---|---|---|---|---|---|---|
+| 1 | False | 2 | 350000 | False → langsung lanjut | - | - | - | Input awal sudah valid |
+| 2 | False | 2 | 350000 | - | - | - | - | Bukan member → masuk cabang ELSE |
+| 3 | False | 2 | 350000 | - | **5** | - | - | 350000≥300000 → dapat diskon 5% |
+| 4 | False | 2 | 350000 | - | 5 | **17500** | - | 350000 × 5% |
+| 5 | False | 2 | 350000 | - | 5 | 17500 | **332500** | 350000 − 17500 |
+
+**Output:** `nominal_diskon = 17500`, `total_bayar = 332500`
+
+### Kasus C: Input awal `total_awal = -50000` (salah), lalu dikoreksi jadi `100000`, `is_member = False`, `jumlah_buku = 1`
+
+Di kasus ini input pertama tidak valid karena `total_awal` negatif, jadi program masuk ke loop validasi dan minta input ulang. Setelah dikoreksi (`total_awal = 100000`, `jumlah_buku` tetap `1`), barulah program lanjut ke perhitungan diskon.
+
+| Langkah | is_member | jumlah_buku | total_awal | Kondisi Loop (`<0 OR <1`) | persen_diskon | nominal_diskon | total_bayar | Keterangan |
+|---|---|---|---|---|---|---|---|---|
+| 1 | False | 1 | -50000 | **True** → ulangi | - | - | - | total_awal negatif → input awal tidak valid |
+| 2 (re-input) | False | 1 | 100000 | False → keluar loop | - | - | - | Input dikoreksi, sekarang valid |
+| 3 | False | 1 | 100000 | - | - | - | - | Bukan member → masuk cabang ELSE |
+| 4 | False | 1 | 100000 | - | **0** | - | - | 100000≥300000 → False, jadi tidak dapat diskon |
+| 5 | False | 1 | 100000 | - | 0 | **0** | - | 100000 × 0% |
+| 6 | False | 1 | 100000 | - | 0 | 0 | **100000** | 100000 − 0 |
+
+**Output:** `nominal_diskon = 0`, `total_bayar = 100000`
+
 
 
 
