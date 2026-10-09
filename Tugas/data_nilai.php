@@ -1,12 +1,5 @@
 <?php
-/**
- * nilai.php - Aplikasi Manajemen Data Nilai Siswa
- * Fitur : queue, stack, bubble/selection sort, linear/binary search, profiling
- *
- * Changelog:
- *  v1.0 (06-10-2026) Versi awal
- *  v1.1 (09-10-2026) Profiling otomatis muncul setiap kali sorting dijalankan
- */
+
 session_start();
 foreach (array('data', 'antrian', 'undo') as $k) {
     if (!isset($_SESSION[$k])) $_SESSION[$k] = array();
@@ -190,7 +183,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <html>
 <head>
 <meta charset="utf-8">
-<title>Data Nilai Siswa</title>
+<title>Sistem Data Nilai Mahasiswa</title>
 <style>
    h2.judul {
     font-family: "Segoe UI", Tahoma, Arial, sans-serif;
@@ -214,7 +207,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 <hr>
 
-<h3>1. Tambah ke Antrian (Queue)</h3>
+<h3>1. Tambah ke Antrian</h3>
 <form method="post">
     <input type="hidden" name="aksi" value="tambah">
     NIM: <input type="text" name="nim" required>
@@ -233,7 +226,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <input type="hidden" name="aksi" value="proses"><button>Proses Antrian</button>
 </form>
 <form method="post" style="display:inline">
-    <input type="hidden" name="aksi" value="undo"><button>Undo (Stack)</button>
+    <input type="hidden" name="aksi" value="undo"><button>Undo</button>
 </form>
 <form method="post" style="display:inline">
     <input type="hidden" name="aksi" value="reset"><button>Reset</button>
@@ -272,8 +265,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <h3>3. Cari Data</h3>
 <form method="post">
     <input type="text" name="kunci" placeholder="Nama / NIM" required>
-    <button name="aksi" value="cari_linear">Cari Nama (Linear)</button>
-    <button name="aksi" value="cari_binary">Cari NIM (Binary)</button>
+    <button name="aksi" value="cari_linear">Cari Nama</button>
+    <button name="aksi" value="cari_binary">Cari NIM</button>
 </form>
 
 <h3>Data Siswa</h3>
@@ -296,5 +289,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     </tr>
     <?php endforeach; ?>
 </table>
+
+<br>
+
+<hr>
+
+<br>
+
 </body>
 </html>
