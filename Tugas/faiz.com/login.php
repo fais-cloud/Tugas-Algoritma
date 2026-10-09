@@ -1,7 +1,7 @@
 <?php
-    if(isset($_POST{'login'})) {
+    if(isset($_POST['login'])) {
         $username = $_POST ['username'];
-        echo $username;
+        $password = $_POST ['password'];
     }
 ?>
 
@@ -18,7 +18,7 @@
     <h3>MASUK AKUN</h3>
     <form action="login.php" method="POST">
         <input type="text" placeholder="username" name="username"/>
-        <input type="passsword" placeholder="passsword" name="passsword"/>
+        <input type="password" placeholder="password" name="password"/>
         <button type="submit" name="login">masuk sekarang</button>
     </form>
 
