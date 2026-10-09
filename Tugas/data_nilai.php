@@ -181,20 +181,36 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     } elseif ($aksi == 'reset') {
         session_destroy();
-        header('Location: nilai.php');
+        header('Location: ' . $_SERVER['PHP_SELF']);;
         exit;
     }
 }
 ?>
 <!DOCTYPE html>
 <html>
-<head><meta charset="utf-8"><title>Data Nilai Siswa</title></head>
+<head>
+<meta charset="utf-8">
+<title>Data Nilai Siswa</title>
+<style>
+   h2.judul {
+    font-family: "Segoe UI", Tahoma, Arial, sans-serif;
+    font-size: 22px;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+    color: #1e3a8a;
+    text-align: left;
+    display: inline-block;
+    margin: 20px 0;
+    padding: 12px 28px;
+    background: #dbeafe;
+    border: 1px solid #bfdbfe;
+    border-radius: 999px;
+    box-shadow: 0 3px 8px rgba(59, 130, 246, 0.2);
+}
+</style>
+</head>
 <body>
-<h2>Sistem Data Nilai Mahasiswa</h2>
-
-<?php if ($pesan) echo '<p><i>' . htmlspecialchars($pesan) . '</i></p>'; ?>
-
-<br>
+<h2 class="judul">Sistem Data Nilai Mahasiswa</h2>
 
 <hr>
 
