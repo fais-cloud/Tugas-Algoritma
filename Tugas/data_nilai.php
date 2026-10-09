@@ -174,7 +174,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     } elseif ($aksi == 'reset') {
         session_destroy();
-        header('Location: ' . $_SERVER['PHP_SELF']);;
+        header('Location: ' . $_SERVER['PHP_SELF']);
         exit;
     }
 }
