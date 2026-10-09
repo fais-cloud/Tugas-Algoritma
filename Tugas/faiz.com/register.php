@@ -8,6 +8,7 @@
 <body>
     <?php include "layout/header.html" ?>
 
+    <h3>DAFTAR AKUN</h3>
     <form>
         <input type="text" placeholder="username" name="username"/>
         <input type="passsword" placeholder="password" name="password"/>
@@ -15,6 +16,5 @@
     </form>
 
     <?php include "layout/footer.html" ?>
-    
 </body>
 </html>
