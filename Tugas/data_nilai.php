@@ -82,6 +82,7 @@ function binarySearch($arr, $nim) {
 /* ---------- PROSES FORM ---------- */
 $tampil = $_SESSION['data'];
 $pesan = '';
+$hasilCari = null;  //data siswa yang ditemukan
 $profil = null;   // diisi otomatis setiap kali sorting dijalankan
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -137,16 +138,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     } elseif ($aksi == 'cari_linear') {
         $i = linearSearch($_SESSION['data'], $_POST['kunci']);
-        $pesan = ($i >= 0)
-            ? 'Linear search: ditemukan di indeks ' . $i
-            : 'Linear search: tidak ditemukan.';
+        $hasilCari = ($i >= 0)
+            ? 'Nama ditemukan di nomor ' . ($i + 1)
+            : 'Nama tidak ditemukan.';
 
     } elseif ($aksi == 'cari_binary') {
         $urut = bubbleSort($_SESSION['data'], 'nim');
         $i = binarySearch($urut, trim($_POST['kunci']));
-        $pesan = ($i >= 0)
-            ? 'Binary search: ' . $urut[$i]['nama'] . ' (nilai ' . $urut[$i]['nilai'] . ')'
-            : 'Binary search: NIM tidak ditemukan.';
+        $hasilCari = ($i >= 0)
+            ? '' . $urut[$i]['nama'] . ' (nilai ' . $urut[$i]['nilai'] . ')'
+            : 'NIM tidak ditemukan.';
 
     } elseif ($aksi == 'hapus') {                  // HAPUS satu data
         $nim = $_POST['nim'];
@@ -203,6 +204,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 </style>
 </head>
 <body>
+
 <h2 class="judul">Sistem Data Nilai Mahasiswa</h2>
 
 <hr>
@@ -269,7 +271,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <button name="aksi" value="cari_binary">Cari NIM</button>
 </form>
 
-<h3>Data Siswa</h3>
+<?php if ($hasilCari) echo '<p><i>' . htmlspecialchars($hasilCari) . '</i></p>'; ?>
+
+<h3>Data Mahasiswa</h3>
 <table border="1" cellpadding="6" cellspacing="0">
     <tr><th>No</th><th>NIM</th><th>Nama</th><th>Nilai</th><th>Aksi</th></tr>
     <?php foreach ($tampil as $i => $s): ?>
